@@ -1,24 +1,15 @@
-# README
+# Stripe Connect Example (Rails 5)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple double-sided marketplace Stripe Connect example.
 
-Things you may want to cover:
+Get started:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Clone repo
+2. `bundle`
+3. Create .env file with:
+```
+STRIPE_CLIENT_ID=ca_xxxx
+STRIPE_CLIENT_SECRET=sk_test_xxxx
+```
+4. `rake db:migrate`
+5. `rails s`
