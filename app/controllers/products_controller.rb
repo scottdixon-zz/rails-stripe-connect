@@ -16,6 +16,9 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+    if current_user.stripe_user_id.nil?
+      redirect_to pages_settings_path, notice: "!! Please connect with Stripe before adding a product !!"
+    end
     @product = Product.new
   end
 
