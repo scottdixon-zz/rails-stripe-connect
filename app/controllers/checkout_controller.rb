@@ -1,4 +1,5 @@
 class CheckoutController < ApplicationController
+  skip_before_action :authenticate_user!
   
   # post /checkout  
   def create
