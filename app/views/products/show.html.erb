@@ -19,3 +19,11 @@
   <%= @product.price %>
 </p>
 
+<%= form_with(url: '/checkout', local: true) do |form| %>
+  <%= hidden_field_tag(:product_id, @product.id) %>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="<%= @product.title %>"
+            data-amount="<%= (@product.price * 100).to_i %>"
+            data-locale="auto"></script>
+<% end %>
