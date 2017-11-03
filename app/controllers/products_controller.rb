@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_user_owns_product, only: [:show, :edit, :update, :destroy]
   # GET /products
   # GET /products.json
   def index
@@ -70,6 +70,11 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:user_id, :title, :description, :price)
+    end
+
+    # Make sure the user owns the product they are editing/deleting
+    def check_user_owns_product
+      head :unauthorized if @product.user != current_user
     end
 
 end
