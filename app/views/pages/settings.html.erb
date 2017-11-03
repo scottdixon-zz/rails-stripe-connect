@@ -1,0 +1,10 @@
+<h1>Settings</h1>
+
+<p><%= notice %></p>
+
+<% if @stripe_user_id.nil? %>
+  <a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=<%= ENV.fetch('STRIPE_CLIENT_ID') %>&scope=read_write" class="stripe-connect"><span>Connect with Stripe</span></a>
+<% else %>
+  <p>Conected with Stripe!</p>
+  <p>Stripe User ID: <strong><%= @stripe_user_id %></strong></p>
+<% end %>
