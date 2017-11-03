@@ -18,7 +18,12 @@ class CheckoutController < ApplicationController
       :customer    => customer.id,
       :amount      => (@product.price * 100).to_i,
       :description => @product.title,
-      :currency    => 'aud'
+      :currency    => 'aud',
+      # Strip connect magic, send 80% of the funds (keep 20% cut)
+      :destination => {
+        :amount => (@product.price * 100 * 0.8).to_i,
+        :account => @product.user.stripe_user_id,
+      }
     )
 
     # Log the response from Stripe
