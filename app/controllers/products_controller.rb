@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :check_user_owns_product, only: [:show, :edit, :update, :destroy]
+  before_action :check_user_owns_product, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show]
+
   # GET /products
   # GET /products.json
   def index
