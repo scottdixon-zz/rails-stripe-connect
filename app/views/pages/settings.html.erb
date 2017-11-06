@@ -7,4 +7,6 @@
 <% else %>
   <p>Connected with Stripe!</p>
   <p>Stripe User ID: <strong><%= @stripe_user_id %></strong></p>
-<% end %>
+<% end %><br>
+
+<%= link_to 'Back to Dashboard', root_path %>
